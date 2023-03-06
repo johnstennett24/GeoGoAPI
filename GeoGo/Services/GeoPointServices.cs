@@ -20,4 +20,26 @@ public class GeoPointServices
     geoPoint.Id = _nextId++;
     _points?.Add(geoPoint);
   }
+
+  public static void Delete(int id)
+  {
+    var point = Get(id);
+    if (point is null)
+    {
+      return;
+    }
+
+    _points?.Remove(point);
+  }
+
+  public static void Update(GeoPoint point)
+  {
+    var index = _points.FindIndex(p => p.Id == point.Id);
+    if (index == 1)
+    {
+      return;
+    }
+
+    _points[index] = point;
+  }
 }
