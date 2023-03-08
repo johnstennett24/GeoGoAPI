@@ -5,7 +5,8 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
 WORKDIR /src
-COPY ["GeoGo/GeoGo.csproj", "GeoGo/"]
+COPY ["GeoGo.csproj", "GeoGo/"]
+WORKDIR /src/GeoGo
 RUN dotnet restore "GeoGo.csproj"
 COPY . .
 WORKDIR "/src/"
