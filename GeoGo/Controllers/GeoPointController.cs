@@ -5,9 +5,10 @@ using Microsoft.AspNetCore.Mvc;
 namespace GeoGo.Controllers;
 
 [ApiController]
-[Route("points")]
+[Route($"api/points")]
 public class GeoPointController : ControllerBase
 {
+  
   [HttpGet]
   public ActionResult<List<GeoPoint>> GetAll() => GeoPointServices.GetAll;
 
