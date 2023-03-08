@@ -9,7 +9,7 @@ COPY ["GeoGo.csproj", "GeoGo/"]
 WORKDIR /src/GeoGo
 RUN dotnet restore "GeoGo.csproj"
 COPY . .
-WORKDIR "/src/"
+WORKDIR /src/GeoGo
 RUN dotnet build "GeoGo.csproj" -c Release -o /app/build
 
 FROM build AS publish
@@ -19,3 +19,4 @@ FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
 ENTRYPOINT ["dotnet", "GeoGo.dll"]
+RUN bash
